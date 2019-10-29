@@ -25,5 +25,9 @@ public class Counting {
                 charList.put(c, count + 1);
             }
         }
+
+        for (Map.Entry<Character, Integer> oneChar : charList.entrySet()){
+            System.out.println(oneChar.getKey() + ": " + oneChar.getValue());
+        }
     }
 }
