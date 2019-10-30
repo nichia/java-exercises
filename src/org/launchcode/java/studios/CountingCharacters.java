@@ -5,7 +5,7 @@ import java.util.Map;
 import java.lang.Character.*;
 import java.util.Scanner;
 
-public class Counting {
+public class CountingCharacters {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         HashMap<Character, Integer> charList = new HashMap<>();
@@ -16,11 +16,11 @@ public class Counting {
         str = in.nextLine();
 
         for (char c : str.toCharArray()) {
-            // containsKey() checks if this map contains a mapping for a key c
             if (Character.isLetter(c) ) {
                 if (Character.isUpperCase(c)) {
                     c = Character.toLowerCase(c);
                 }
+                // .containsKey() checks if charList contains a record with key c
                 Integer count = charList.containsKey(c) ? charList.get(c) : 0;
                 charList.put(c, count + 1);
             }
