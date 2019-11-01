@@ -3,31 +3,31 @@ package exercises.school;
 import java.util.HashMap;
 
 public class Course {
-    private static final int classSize = 30;
+    private static final int maxSize = 30;
     private static int nextCourseId = 1;
     private String name;
     private final int courseId;
-    private int maxSize;
+    private int courseSize;
     private HashMap<Student, Double> students = new HashMap<>();
 
-    public Course(String name, int courseId, int maxSize) {
+    public Course(String name, int courseId, int courseSize) {
         this.name = name;
         this.courseId = courseId;
-        this.maxSize = maxSize;
+        this.courseSize = courseSize;
     }
 
     public Course(String name, int courseId) {
-        this(name, courseId, classSize);
+        this(name, courseId, maxSize);
         nextCourseId++;
     }
 
     public Course(String name) {
-        this(name, nextCourseId, classSize);
+        this(name, nextCourseId, maxSize);
         nextCourseId++;
     }
 
     public void setStudents(Student aStudent) {
-        student.put(aStudent, 0);
+        students.put(aStudent, 0.0);
     }
 
     public HashMap<Student, Double> getStudents() {
@@ -35,10 +35,10 @@ public class Course {
     }
 
     public void setStudentGrade(Student aStudent, double grade) {
-        student.put(aStudent, grade);
+        students.put(aStudent, grade);
     }
 
-    public Array<Student, Double> getStudentGrade(Student aStudent) {
-        return students.getValue(aStudent);
-    }
+//    public HashMap<Student, Double> getStudentGrade(Student aStudent) {
+//        return students.getValue(aStudent);
+//    }
 }
