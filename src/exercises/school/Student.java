@@ -1,6 +1,8 @@
 package exercises.school;
 
 public class Student {
+    private static final int CREDITS_PER_GRADE = 20;
+
     private static int nextStudentId = 1;
     private String name;
     private final int studentId;
@@ -31,20 +33,41 @@ public class Student {
         name = aName;
     }
 
-    public int getNumberOfCredits() {
-        return numberOfCredits;
+    public void addGrade(int courseCredits, double grade) {
+        double currQualityScore = gpa * numberOfCredits;
+        double totalQualityScore = currQualityScore + (courseCredits * grade);
+
+        numberOfCredits += courseCredits;
+        gpa = (totalQualityScore / numberOfCredits);
     }
 
-    public void setNumberOfCredits(int aNumberOfCredits) {
-        numberOfCredits = aNumberOfCredits;
+    public String getGradeLevel() {
+        if (numberOfCredits >= 90) {
+            return "senior";
+        } else if (numberOfCredits >= 60) {
+            return "junior";
+        } else if (numberOfCredits >= 30) {
+            return "sophomore";
+        } else {
+            return "freshman";
+        }
     }
 
-    public double getGpa() {
-        return gpa;
+    public String toString() {
+        String studentStr = studentId + " " + name + " Grade: " + getGradeLevel() + " Number of Credits: " + numberOfCredits + " gpa: " + gpa ;
+
+        return studentStr;
     }
 
-    public void setGpa(double aGpa) {
-        gpa = aGpa;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Student theStudent = (Student) o;
+        return studentId == theStudent.studentId;
     }
+
 }
 
